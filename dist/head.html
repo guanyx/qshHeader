@@ -1,0 +1,83 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta http-equiv="Pragma" content="no-cache"><meta http-equiv="Cache-Control" content="no-cache"><meta http-equiv="Expires" content="0"><meta name="viewport" content="initial-scale=1,user-scalable=no"><link rel="stylesheet" href="http://libs.useso.com/js/bootstrap/3.2.0/css/bootstrap.min.css"><link rel="stylesheet" href="font/iconfont.css" type="text/css"><link rel="stylesheet" href="css/head.css"><title>Page</title></head><body><script src="http://libs.useso.com/js/jquery/2.1.1/jquery.min.js"></script><script src="http://libs.useso.com/js/bootstrap/3.2.0/js/bootstrap.min.js"></script><div id="head-wrapper"></div><button id="append">在右侧右边新增一个按钮</button> <button id="prepend">在右侧坐边新增一个按钮</button> <button id="remove">删除最后加入的按钮</button><script src="js/head.js"></script><script>var options = {
+        mount: '#head-wrapper',
+        name: "商品管理",
+        style: 'custom',
+        leftItems: [
+            {
+                icon: 'back',
+                handler: function(){
+                    return false;
+                }
+            }
+        ],
+        rightItems: [
+            {
+                text: '完成',
+                handler: function(e){
+                    alert("完成了");
+                }
+            },
+            {
+                icon: 'guanzhugengduocaozuo',
+                hasActive: true,
+                items: [
+                    {
+                        name: '消息',
+                        icon: 'xiaoxi',
+                        hasActive: true,
+                        handler: function(){
+                            alert('消息')
+                        }
+                    },
+                    {
+                        name: '主页',
+                        icon: 'home',
+                        handler: function(){
+                            alert('主页')
+                        }
+                    },
+                    {
+                        name: '我的企商',
+                        icon: 'user',
+                        handler: function(){
+                            alert('我的企商')
+                        }
+                    }
+                ]
+            }
+        ]
+    };
+    var headerObj = qshHeader(options);
+
+    var id = 1;
+    var ids = [];
+    $("#append").click(function(){
+        var cid = id;
+        headerObj.append({
+            text: '按钮'+cid,
+            id: cid,
+            handler: function(e){
+                alert("按钮"+cid);
+            }
+        })
+        ids.push(id);
+        id++;
+    })
+
+    $("#prepend").click(function(){
+        var cid = id;
+        headerObj.prepend({
+            text: '按钮'+cid,
+            id: cid,
+            handler: function(e){
+                alert("按钮"+cid);
+            }
+        })
+        ids.push(id);
+        id++;
+    })
+
+    $("#remove").click(function(){
+        var rid = ids.pop();
+        headerObj.remove(rid);
+    })</script></body></html>

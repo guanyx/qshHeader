@@ -1,0 +1,129 @@
+.head{
+  @background-color: #eee;
+  @border-color: #d0d0d0;
+  @head-height: 45px;
+  @active-color: #ccc;
+
+  width: 100%;
+  height: @head-height;
+  line-height: @head-height - 1px;
+  position: relative;
+
+  border-bottom: 1px solid #d0d0d0;
+  color: #333;
+  background-color: @background-color;
+  user-select: none;
+
+
+  .head_left{
+    float: left;
+    padding-left: 15px;
+  }
+
+  .head_right{
+    float: right;
+    padding-right: 15px;
+  }
+
+  .head_left,
+  .head_right{
+    position: relative;
+    z-index: 2;
+  }
+
+  .head_title{
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    font-size: 15px;
+    text-align: center;
+  }
+
+  .head_icon{
+    height: @head-height -1px;
+    display: inline-block;
+    padding: 0 5px;
+    position: relative;
+
+    i{
+      position: relative;
+      .icon_active{
+        position: absolute;
+        top: -3px;
+        right: -3px;
+      }
+    }
+  }
+
+  .head_menus_item:active,
+  .head_icon:active{
+    background-color: @active-color;
+  }
+
+  .head_menus{
+    position: absolute;
+    right: 5px;
+    top: 100%;
+    background-color: @background-color;
+    z-index: 9;
+
+    box-shadow: 0 0 2px #333;
+    width: 200px;
+
+    list-style-type: none;
+    padding-left: 0;
+    display: none;
+    opacity: 0;
+    transition: opacity .15s ease-in-out;
+  }
+
+  .head_menus.show{
+    opacity: 1;
+  }
+
+  .head_menus_item{
+    border-bottom: 1px solid @border-color;
+    height: 40px;
+    line-height: 40px;
+    padding: 0 10px;
+
+    i{
+      font-size: 20px;
+      margin-right: 10px;
+    }
+
+    .icon-active-wrapper{
+      display: inline-block;
+      float: right;
+      height: 100%;
+
+      .icon_active{
+        display: inline-block;
+        vertical-align: middle;
+      }
+    }
+  }
+
+  .icon_active{
+    background-color: #fba430;
+    height: 6px;
+    width: 6px;
+    border-radius: 50%;
+  }
+}
+
+.head.custom{
+  @background-color: #C40001;
+  background-color: @background-color;
+  color: #FFFFFF;
+  border-bottom: 1px solid #e40001;
+
+  .head_menus{
+    background-color: @background-color;
+  }
+
+  .head_menus_item:active,
+  .head_icon:active{
+    background-color: #e40001;
+  }
+}
